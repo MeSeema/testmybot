@@ -59,8 +59,8 @@
         var msg = data;
         if (data.messageText) {
           msg = data.messageText;
-        } else if (data.message) {
-          msg = { message: data.message };
+        } else if (data.sourceData.message) {
+          msg = { message: data.sourceData.message };
         }
         
         $scope.$apply(function() {

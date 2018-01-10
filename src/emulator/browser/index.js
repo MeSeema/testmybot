@@ -21,7 +21,8 @@ module.exports = () => {
   io.on('connection', function (socket) {
     socket.on('bothears', function (msg, from, channel) {
       console.log('received message from', from, 'msg', JSON.stringify(msg), 'channel', channel);
-      testmybot.hears({ messageText: msg, sender: from, channel: channel });
+      if (typeof msg === 'string') testmybot.hears({ messageText: msg, sender: from, channel: channel });
+      else testmybot.hears({ sourceData: msg, sender: from, channel: channel });
     });
   });
 
